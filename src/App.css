@@ -1,3 +1,7 @@
+* {
+  outline: none;
+}
+
 body {
   margin: 0;
 }
@@ -8,9 +12,11 @@ div {
   background-color: #111;
   color: #fff;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: sans-serif;
+  font-weight: bold;
 }
 
 h1 {

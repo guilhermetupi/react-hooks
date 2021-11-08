@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
 function App() {
   const [counter, setCounter] = useState(0);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    console.log("useEffect sempre");
+  }); // useEffect runs every render
+
+  useEffect(() => {
+    console.log("useEffect um");
+  }, []); // useEffect runs only once
+
+  useEffect(() => {
+    console.log("useEffect state");
+  }, [name]); // useEffect runs only on state change
 
   function handlePlus() {
     // setTimeout(() => {
@@ -19,9 +32,15 @@ function App() {
 
   return (
     <div>
-      <button onClick={handlePlus}>+</button>
       <h1>{counter}</h1>
-      <button onClick={handleMinus}>-</button>
+      <span>
+        <button onClick={handlePlus}>+</button>
+        <button onClick={handleMinus}>-</button>
+      </span>
+      <br />
+      <span>{name}</span>
+      <br />
+      <input onChange={(e) => setName(e.target.value)} />
     </div>
   );
 }
