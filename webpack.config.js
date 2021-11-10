@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "src", "index.js"),
+  entry: [
+    "regenerator-runtime/runtime.js",
+    path.resolve(__dirname, "src", "index.js"),
+  ],
   output: {
     path: path.resolve(__dirname, "build"),
     filename: "bundle[fullhash].js",

@@ -1,14 +1,11 @@
 import "regenerator-runtime/runtime";
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./App.css";
 
 function App() {
   const [loading, response] = useFetch(
     "https://api.github.com/users/guilhermetupi"
-  );
-  const [loading1, response1] = useFetch(
-    "https://api.github.com/users/joaobatatinha"
   );
 
   if (loading) {
@@ -29,12 +26,10 @@ function useFetch(url) {
         const json = await resp.json();
 
         setLoading(false);
-        setResponse({ json, status: resp.status });
+        setResponse(json);
       }, 2000);
     })();
   }, [url]);
-
-  useDebugValue(response?.status, (message) => `Status: ${message}`);
 
   return [loading, response];
 }
